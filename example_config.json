@@ -1,0 +1,41 @@
+{
+    "listen_address": "localhost",
+    "listen_port": 8181,
+    "endpoints": {
+        "/harambe": {
+            "command": "echo",
+            "arguments": ["harambe", "lives"],
+            "http_method": "GET",
+            "allow_external_arguments": false,
+            "allow_stdin": false,
+            "discard_stderr": false,
+            "discard_stdout": false
+        },
+        "/good_exit": {
+            "command": "true"
+        },
+        "/bad_exit": {
+            "command": "false"
+        },
+        "/date": {
+            "command": "date"
+        },
+        "/echo": {
+            "command": "cat",
+            "http_method": "POST",
+            "allow_stdin": true
+        },
+        "/echo_args": {
+            "command": "echo",
+            "allow_external_arguments": true
+        },
+        "/stderr": {
+            "command": "/bin/sh",
+            "arguments": ["-c", ">&2 echo 'this is in STDERR'"]
+        },
+        "/stderr_and_stdout": {
+            "command": "/bin/sh",
+            "arguments": ["-c", "echo 'STDOUT'; >&2 echo 'STDERR'"]
+        }
+    }
+}
